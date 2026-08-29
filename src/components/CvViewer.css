@@ -1,0 +1,104 @@
+.cv-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  overflow: hidden;
+  animation: cv-modal-fade-in 0.2s ease-out;
+}
+
+@keyframes cv-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cv-controls {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.75rem;
+  background-color: rgba(10, 10, 10, 0.8);
+  padding: 0.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 229, 153, 0.3);
+  box-shadow: 0 0 20px rgba(0, 229, 153, 0.15);
+  z-index: 100001;
+}
+
+.cv-control-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.cv-control-btn:hover {
+  background-color: rgba(0, 229, 153, 0.1);
+  border-color: rgba(0, 229, 153, 0.4);
+  color: var(--color-accent);
+}
+
+.close-btn {
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  line-height: 1;
+}
+
+.cv-viewer-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  padding: 4rem;
+}
+
+.cv-viewer-container > div {
+  margin: auto;
+  flex-shrink: 0;
+}
+
+.cv-page-render {
+  box-shadow: 0 0 40px rgba(0, 229, 153, 0.2);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  transition: box-shadow var(--transition-normal);
+}
+
+.cv-loading, .cv-error {
+  color: var(--color-text-primary);
+  font-size: 1.25rem;
+  background-color: rgba(10, 10, 10, 0.8);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 229, 153, 0.2);
+  box-shadow: 0 0 20px rgba(0, 229, 153, 0.1);
+}
+
+/* React-PDF specific overrides */
+.react-pdf__Page__canvas {
+  margin: 0 auto;
+  border-radius: 0.25rem;
+}
+
+/* Hide text layer strictly for purely visual pdf renders to avoid selection artifacts during zoom/drag */
+.react-pdf__Page__textContent, 
+.react-pdf__Page__annotations {
+  display: none !important;
+}
