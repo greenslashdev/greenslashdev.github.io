@@ -17,8 +17,13 @@
 }
 
 @keyframes cv-modal-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .cv-controls {
@@ -69,7 +74,7 @@
   padding: 4rem;
 }
 
-.cv-viewer-container > div {
+.cv-viewer-container>div {
   margin: auto;
   flex-shrink: 0;
 }
@@ -81,7 +86,8 @@
   transition: box-shadow var(--transition-normal);
 }
 
-.cv-loading, .cv-error {
+.cv-loading,
+.cv-error {
   color: var(--color-text-primary);
   font-size: 1.25rem;
   background-color: rgba(10, 10, 10, 0.8);
@@ -98,7 +104,31 @@
 }
 
 /* Hide text layer strictly for purely visual pdf renders to avoid selection artifacts during zoom/drag */
-.react-pdf__Page__textContent, 
+.react-pdf__Page__textContent,
 .react-pdf__Page__annotations {
   display: none !important;
+}
+
+@media (max-width: 768px) {
+  .cv-viewer-container {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+
+  .cv-controls {
+    top: 1rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 400px;
+    justify-content: center;
+    border-radius: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cv-control-btn {
+    padding: 0.5rem 0.75rem;
+  }
 }
